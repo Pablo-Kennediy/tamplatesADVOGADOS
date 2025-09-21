@@ -1,0 +1,1 @@
+Permite o desenvolvimento de formulários de contato, áreas de login simples (se necessário) e integração com sistemas de gerenciamento de conteúdo (CMS) como WordPress, que é o padrão da indústria para sites institucionais. O WordPress facilitará a manutenção e atualização do conteúdo pelo próprio advogado no futuro (o que você pode vender como um benefício).
