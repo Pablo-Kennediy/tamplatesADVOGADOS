@@ -1,0 +1,232 @@
+/*
+ * Configurações Base e Reset
+ */
+:root {
+    --color-primary: #1e3a8a; /* Azul Escuro - Blue-900 */
+    --color-secondary: #fcd34d; /* Amarelo - Yellow-500 */
+    --color-success: #15803d; /* Verde para sucesso/confiabilidade */
+    --color-danger: #b91c1c; /* Vermelho para avisos/segurança */
+    --color-background-light: #f9fafb; /* Cinza claro - Gray-50 */
+    --color-background-blue: #eff6ff; /* Azul muito claro - Blue-50 */
+    --color-text-dark: #374151; /* Cinza escuro - Gray-700 */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    background-color: #fff;
+}
+
+/*
+ * Layout e Container (mx-auto, p-4, max-w-4xl)
+ */
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem; /* p-4 */
+    max-width: 900px; /* max-w-4xl aproximado */
+}
+
+/*
+ * Tipografia e Estilos de Texto
+ */
+h1 {
+    font-size: 3rem; /* text-5xl */
+    font-weight: 800; /* font-extrabold */
+    color: var(--color-primary); /* text-blue-900 */
+}
+
+h2 {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700; /* font-bold */
+    color: var(--color-text-dark); /* text-gray-800 */
+}
+
+h3 {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+}
+
+p {
+    font-size: 1.125rem; /* text-lg */
+}
+
+.text-xl {
+    font-size: 1.25rem; 
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.text-blue-900 {
+    color: var(--color-primary);
+}
+
+.text-blue-700 {
+    color: #1d4ed8;
+}
+
+.text-red-700 {
+    color: var(--color-danger);
+}
+
+.text-gray-700 {
+    color: var(--color-text-dark);
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+/*
+ * Componentes Estruturais (Header, Sections)
+ */
+.py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mb-10 { margin-bottom: 2.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.pb-2 { padding-bottom: 0.5rem; }
+.mt-8 { margin-top: 2rem; }
+
+.rounded-lg { border-radius: 0.5rem; }
+.bg-gray-50 { background-color: var(--color-background-light); }
+
+.border-b-2 { border-bottom: 2px solid #e5e7eb; /* border-gray-200 */ }
+
+/*
+ * Pilares Legais (ul, li)
+ */
+.list-disc {
+    list-style-type: disc;
+}
+.list-inside li {
+    padding-left: 0.5rem; 
+}
+.space-y-2 > * + * {
+    margin-top: 0.5rem;
+}
+
+
+/*
+ * Chamada para Ferramentas (bg-blue-50, shadow-inner)
+ */
+.ferramentas-chamada {
+    background-color: var(--color-background-blue); 
+    padding: 1.5rem; /* p-6 */
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); /* shadow-inner */
+}
+
+/*
+ * Botões e Links de Ação (A tag)
+ */
+a {
+    text-decoration: none;
+    transition: all 0.3s ease; /* transition duration-300 */
+}
+
+.ferramentas-chamada a {
+    display: block; /* Garante que os botões ocupem a largura total em mobile */
+    font-weight: 600; /* font-semibold */
+    padding: 0.75rem 1.5rem; /* py-3 px-6 */
+    border-radius: 0.5rem; /* rounded-lg */
+}
+
+.bg-blue-600 {
+    background-color: #2563eb;
+    color: white;
+}
+
+.bg-blue-600:hover {
+    background-color: #1d4ed8; /* hover:bg-blue-700 */
+}
+
+.bg-yellow-500 {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.bg-yellow-500:hover {
+    background-color: #fbbf24; /* hover:bg-yellow-600 */
+}
+
+
+/*
+ * Segurança e Qualidade (Alerta/Caixas de Informação)
+ */
+.grid {
+    display: grid;
+    gap: 1.5rem; /* gap-6 */
+}
+
+/* Estilos de borda e fundo das caixas de segurança */
+.border-l-4 { border-left-width: 4px; border-left-style: solid; }
+.border-red-500 { border-color: var(--color-danger); }
+.bg-red-50 { background-color: #fef2f2; }
+.text-red-700 { color: var(--color-danger); }
+
+.border-green-500 { border-color: var(--color-success); }
+.bg-green-50 { background-color: #f0fdf4; }
+.text-green-700 { color: var(--color-success); }
+
+.p-4 { padding: 1rem; }
+
+/*
+ * Aviso Legal (aside)
+ */
+.aviso-legal {
+    background-color: #fee2e2; /* bg-red-200 */
+    color: var(--color-danger); /* text-red-800 */
+    padding: 1rem; /* p-4 */
+}
+
+
+/*
+ * Footer
+ */
+footer {
+    border-top: 1px solid #e5e7eb; /* border-t */
+    padding-top: 1rem; /* py-4 */
+    padding-bottom: 1rem;
+    color: #6b7280; /* text-gray-500 */
+    font-size: 0.875rem; /* text-sm */
+    text-align: center;
+}
+
+
+/*
+ * Responsividade (Mobile e Desktop)
+ */
+@media (min-width: 768px) {
+    /* md:grid-cols-2 */
+    .grid-cols-1.md\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+    /* sm:flex-row */
+    .flex.flex-col.sm\:flex-row {
+        flex-direction: row;
+    }
+
+    /* Ajuste de espaçamento dos botões em desktop */
+    .ferramentas-chamada div {
+        gap: 1rem; /* gap-4 */
+    }
+    .ferramentas-chamada a {
+        display: inline-block;
+        width: auto;
+    }
+}

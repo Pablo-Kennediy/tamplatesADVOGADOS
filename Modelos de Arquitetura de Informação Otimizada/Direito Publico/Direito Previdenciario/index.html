@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Direito Previdenciário e INSS | Cálculo e Regras da Reforma (EC 103/2019)</title>
+    
+    <meta name="description" content="Plataforma especializada e atualizada sobre o Direito Previdenciário brasileiro. Simule seu tempo de contribuição, entenda as Regras de Transição e calcule a elegibilidade de aposentadorias e benefícios do RGPS (INSS).">
+    
+    <link rel="stylesheet" href="styles/main.css"> 
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+
+    <header>
+        <h1>Guia de Direito Previdenciário e INSS</h1>
+        <p>Regras e Cálculo de Aposentadoria após a **Emenda Constitucional n.º 103/2019**</p>
+        <nav>
+            <ul>
+                <li><a href="#simulador">Simulador</a></li>
+                <li><a href="#regras">Regras de Transição</a></li>
+                <li><a href="#beneficios">Tipos de Benefícios</a></li>
+                <li><a href="#autoridade">Fundamentação Legal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="conteudo-principal">
+        
+        <section id="alerta-legal">
+            <h2>🚨 Aviso Legal e Integridade</h2>
+            <div class="disclaimer">
+                ⚠️ **O conteúdo é informativo e não substitui o cálculo e o parecer de um advogado especialista em Direito Previdenciário ou contador.**
+                <p>Nossas ferramentas de cálculo utilizam o texto atualizado da **Lei n.º 8.213/91** e da **EC n.º 103/2019**, mas os resultados são simulações.</p>
+            </div>
+        </section>
+
+     <section id="simulador">
+    <h2>🛠️ Calculadora Previdenciária e Elegibilidade</h2>
+    <div class="ferramenta-calculo">
+        <form id="form-elegibilidade" action="calcular.php" method="POST">
+            <div>
+                <label for="data-nascimento">Data de Nascimento:</label>
+                <input type="date" id="data-nascimento" name="dataNascimento" required>
+            </div>
+            
+            <div>
+                <label for="tempo-contribuicao-anos">Tempo de Contribuição (Anos):</label>
+                <input type="number" id="tempo-contribuicao-anos" name="tempoAnos" placeholder="Ex: 25" min="0" required>
+            </div>
+            
+            <div>
+                <label for="tempo-contribuicao-meses">Tempo de Contribuição (Meses):</label>
+                <input type="number" id="tempo-contribuicao-meses" name="tempoMeses" placeholder="Ex: 6" min="0" max="11" required>
+            </div>
+            
+            <button type="submit" id="btn-calcular">Calcular Elegibilidade</button>
+        </form>
+        
+        <div id="resultado-calculo" style="margin-top: 20px;">
+            </div>
+    </div>
+    <?php
+
+// 1. Verifica se o formulário foi enviado (usando o método POST)
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    // 2. Coleta os dados do formulário
+    $dataNascimentoStr = $_POST['dataNascimento'];
+    $tempoAnos         = intval($_POST['tempoAnos']);
+    $tempoMeses        = intval($_POST['tempoMeses']);
+    
+    // 3. Converte a data de nascimento para um objeto DateTime (facilita o cálculo de idade)
+    try {
+        $dataNascimento = new DateTime($dataNascimentoStr);
+        $hoje = new DateTime();
+
+        // Calcula a idade atual em anos
+        $idade = $hoje->diff($dataNascimento)->y;
+        
+        // Converte o tempo total de contribuição para meses (para cálculo unificado)
+        $tempoContribuicaoTotalMeses = ($tempoAnos * 12) + $tempoMeses;
+
+        // =================================================================
+        // 4. A LÓGICA DE CÁLCULO PREVIDENCIÁRIO VIRÁ AQUI
+        // Exemplo: Verificar elegibilidade para a regra da Idade Mínima Progressiva
+        // =================================================================
+        
+        $resultado = "
+            <h3>Resultado da Simulação</h3>
+            <p><strong>Idade Atual:</strong> {$idade} anos</p>
+            <p><strong>Tempo Total de Contribuição:</strong> {$tempoAnos} anos e {$tempoMeses} meses ({$tempoContribuicaoTotalMeses} meses)</p>
+            <hr>
+            <h4>Verificação das Regras de Transição (EC 103/2019):</h4>
+            <p>O cálculo detalhado para cada regra (Pontos, Pedágio 50%, Pedágio 100%, Idade Mínima Progressiva) seria implementado aqui.</p>
+        ";
+
+    } catch (Exception $e) {
+        $resultado = "<p style='color: red;'>Erro ao processar a data: " . $e->getMessage() . "</p>";
+    }
+    
+    // 5. Exibe o resultado. 
+    // Em um cenário real, você provavelmente redirecionaria o usuário
+    // ou usaria AJAX/Fetch para exibir o resultado sem recarregar a página.
+    echo $resultado; 
+
+} else {
+    // Se a página for acessada diretamente
+    echo "<p>Acesso negado. Por favor, utilize o formulário na página inicial.</p>";
+}
+
+?>
+</section>
+
+
+
+        <section id="regras">
+            <h2>📋 Regras de Transição da Reforma (EC 103/2019)</h2>
+            <p>O site é focado na orientação precisa sobre a elegibilidade nas regras de transição. As principais são:</p>
+            <ul>
+                <li>**Pedágio 50%:** Para quem estava próximo de se aposentar em 13/11/2019.</li>
+                <li>**Pedágio 100%:** Exigência de idade mínima e pedágio.</li>
+                <li>**Pontos:** Soma da idade com o tempo de contribuição.</li>
+                <li>**Idade Mínima Progressiva:** Aumenta a idade mínima a cada ano.</li>
+            </ul>
+        </section>
+        
+        <section id="beneficios">
+            <h2>Tipos de Benefícios e Segurados</h2>
+            <h3>Aposentadorias (RGPS)</h3>
+            <p>Idade Programada, Tempo de Contribuição (Transição) e Aposentadoria Especial.</p>
+            <h3>Outros Benefícios</h3>
+            <p>Pensão por Morte, Auxílio-Doença (Auxílio por Incapacidade Temporária), LOAS/BPC.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Guia de Direito Previdenciário. Projeto desenvolvido por **[Sua Empresa]**. Licença [MIT].</p>
+        <p>Contato: [Seu email/link]</p>
+    </footer>
+
+    <script src="main-app.js"></script> 
+</body>
+</html>
