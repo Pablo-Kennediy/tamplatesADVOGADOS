@@ -1,0 +1,235 @@
+/* Variáveis CSS para gerenciamento fácil de cores */
+:root {
+    --primary-color: #0056b3; /* Azul Marinho Profundo */
+    --secondary-color: #ffc107; /* Amarelo (Avisos) */
+    --action-color: #38a169; /* Verde (Botão) */
+    --background-color: #f8f9fa; /* Fundo Cinza Claro */
+    --text-color: #212529; /* Texto Quase Preto */
+    --light-border: #e9ecef;
+}
+
+/* RESET BÁSICO E TIPOGRAFIA */
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding-top: 80px; /* Espaço para o header fixo */
+    margin: 0;
+}
+
+/* Títulos */
+h1, h2, h3 {
+    font-family: 'Merriweather', Georgia, serif;
+    color: var(--primary-color);
+    margin-top: 1.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--light-border);
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* LAYOUT GERAL E CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* HEADER E BUSCA */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+header form {
+    display: flex;
+}
+
+header input[type="search"] {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    width: 250px;
+    font-size: 1rem;
+}
+
+header button[type="submit"] {
+    padding: 8px 15px;
+    background-color: var(--action-color);
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+header button[type="submit"]:hover {
+    background-color: #2e8b57;
+}
+
+/* MAIN LAYOUT (GRID) */
+.layout-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* ASIDE (MENU LATERAL) */
+aside {
+    position: sticky;
+    top: 100px; /* Ajuste para ficar abaixo do header */
+    height: fit-content;
+    padding-right: 20px;
+}
+
+aside h2 {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+aside ul a {
+    display: block;
+    padding: 8px 15px;
+    color: var(--text-color);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    margin-left: -15px;
+    transition: all 0.2s;
+}
+
+aside ul a:hover, aside ul a.active {
+    border-left: 3px solid var(--secondary-color);
+    color: var(--primary-color);
+    background-color: #e3f2fd; /* Fundo sutil para destaque */
+    font-weight: 600;
+}
+
+/* COMPONENTES DE CONTEÚDO */
+
+/* Destaque da Lei/Alerta */
+.card-alerta {
+    background-color: #fff3cd; 
+    border-left: 5px solid var(--secondary-color); 
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    color: #856404; 
+}
+
+.card-alerta h3 {
+    color: #856404;
+    margin-top: 0;
+    border-bottom: none;
+}
+
+/* FOCO NA JURISPRUDÊNCIA/ARTIGO (simulação do CMS) */
+.card-jurisprudencia {
+    border: 1px solid #dee2e6;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card-jurisprudencia strong {
+    color: var(--primary-color);
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--text-color);
+    color: #cccccc;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #ffffff;
+}
+
+/* MEDIA QUERY para Mobile */
+@media (max-width: 800px) {
+    .layout-grid {
+        grid-template-columns: 1fr; /* Coluna única no mobile */
+        gap: 20px;
+    }
+
+    header .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    header form {
+        width: 100%;
+    }
+
+    header input[type="search"] {
+        width: 100%;
+    }
+
+    aside {
+        position: static; /* Desativa o sticky no mobile */
+        height: auto;
+        padding-right: 0;
+    }
+
+    aside h2 {
+        text-align: center;
+        border-bottom: none;
+    }
+
+    aside ul {
+        display: flex; /* Transforma o menu em lista horizontal */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    aside ul a {
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        margin: 0 10px 5px 10px;
+        padding: 5px 8px;
+    }
+}

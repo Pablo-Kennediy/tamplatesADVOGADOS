@@ -1,0 +1,307 @@
+/*==========================================================*/
+/* 1. VARIÁVEIS DE COR E TIPOGRAFIA */
+/*==========================================================*/
+
+:root {
+    /* Cores de Alto Contraste (WCAG AA/AAA) */
+    --cor-primaria: #003366; /* Azul Marinho Sóbrio (Autoridade, Confiança) */
+    --cor-secundaria: #FFC300; /* Amarelo Dourado (Aviso, Destaque) */
+    --cor-texto-principal: #1C1C1C; /* Preto Quase Puro */
+    --cor-fundo: #FFFFFF; /* Branco Puro */
+    --cor-fundo-secundario: #F4F6F8; /* Cinza claro para blocos */
+    --cor-link-hover: #004488; /* Tom mais claro para hover */
+
+    /* Fontes (Legibilidade) */
+    --fonte-principal: 'Inter', 'Roboto', Arial, sans-serif;
+    --tamanho-base: 18px; /* Maior para melhor legibilidade no texto corrido */
+}
+
+/*==========================================================*/
+/* 2. BASE (RESET E TIPOGRAFIA GERAL) */
+/*==========================================================*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fonte-principal);
+    font-size: var(--tamanho-base);
+    line-height: 1.6; /* Aumentado para melhor leitura (WCAG) */
+    color: var(--cor-texto-principal);
+    background-color: var(--cor-fundo);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+
+/* Links */
+a {
+    color: var(--cor-primaria);
+    text-decoration: underline; /* Manter sublinhado para acessibilidade */
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--cor-link-hover);
+    text-decoration: none; /* Sublinhado pode desaparecer no hover para feedback */
+}
+
+/* Títulos (Hierarquia e Acessibilidade) */
+h1, h2, h3 {
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+    color: var(--cor-primaria); /* Títulos em cor de destaque */
+}
+
+h1 { font-size: 2.5em; } /* Aproximadamente 45px */
+h2 { font-size: 1.8em; border-bottom: 2px solid var(--cor-fundo-secundario); padding-bottom: 0.3em; } /* Títulos de Seção */
+h3 { font-size: 1.4em; }
+
+p {
+    margin-bottom: 1em;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--cor-fundo-secundario);
+    margin: 3rem 0;
+}
+
+/* Listas */
+ul {
+    list-style: none;
+}
+
+/*==========================================================*/
+/* 3. CABEÇALHO E NAVEGAÇÃO (HEADER & NAV) */
+/*==========================================================*/
+
+#site-header {
+    background-color: var(--cor-primaria);
+    color: var(--cor-fundo);
+    padding: 1rem 1rem 0.5rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    padding-bottom: 0.5rem;
+}
+
+#site-header h1 {
+    color: var(--cor-fundo);
+    font-size: 1.6em;
+    margin: 0;
+}
+
+#site-header p {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+}
+
+/* Navegação Principal (Módulos Temáticos) */
+nav[aria-label="Navegação de Módulos Legais"] ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem; /* Espaçamento menor para caber mais itens no mobile */
+    justify-content: flex-start;
+}
+
+nav[aria-label="Navegação de Módulos Legais"] a {
+    color: var(--cor-fundo);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px 4px 0 0; /* Bordas no topo para dar efeito de aba */
+    transition: background-color 0.2s ease;
+    font-size: 0.9em;
+}
+
+nav[aria-label="Navegação de Módulos Legais"] a:hover {
+    background-color: var(--cor-link-hover);
+    color: var(--cor-fundo);
+}
+
+/*==========================================================*/
+/* 4. LAYOUT PRINCIPAL (GRID E RESPONSIVIDADE) */
+/*==========================================================*/
+
+/* Contêiner que envolve MAIN e ASIDE */
+.container-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem; /* Padding base para mobile e desktop */
+    display: block; /* Padrão para mobile */
+}
+
+main {
+    padding: 0;
+}
+
+aside {
+    padding: 1.5rem;
+    background-color: var(--cor-fundo-secundario);
+    border-radius: 6px;
+    margin-top: 2rem; /* Espaço após o conteúdo principal no mobile */
+}
+
+aside h2, aside h3 {
+    color: var(--cor-texto-principal);
+    border: none;
+    margin-top: 0;
+}
+
+/* Layout de Duas Colunas (Desktop) */
+@media (min-width: 900px) {
+    .container-grid {
+        display: grid;
+        grid-template-columns: 2.5fr 1fr; /* Conteúdo maior e barra lateral menor */
+        gap: 3rem;
+    }
+    
+    aside {
+        order: 1; /* Coloca a barra lateral à direita */
+        margin-top: 0;
+        position: sticky;
+        top: 100px; /* Alinhado após o cabeçalho fixo */
+        height: fit-content;
+    }
+}
+
+/*==========================================================*/
+/* 5. ELEMENTOS DA BARRA LATERAL (ASIDE) */
+/*==========================================================*/
+
+/* Form de Busca */
+aside form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+aside label {
+    font-weight: 600;
+}
+
+#search-input {
+    padding: 0.8rem;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+aside button {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-principal);
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.2s ease;
+}
+
+aside button:hover {
+    background-color: #e5b000;
+}
+
+/* Lista de Ferramentas */
+#ferramentas ul {
+    padding-left: 0;
+}
+
+#ferramentas li {
+    padding: 0.5rem 0;
+    border-top: 1px dashed #CCC;
+}
+
+#ferramentas li a {
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+}
+
+/*==========================================================*/
+/* 6. MÓDULOS DE CONTEÚDO E DESTAQUES */
+/*==========================================================*/
+
+/* Artigo da CLT (Para destacar o texto legal) */
+.clt-artigo {
+    background-color: var(--cor-fundo-secundario);
+    border-left: 5px solid var(--cor-primaria);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0 4px 4px 0;
+}
+
+.clt-artigo h3 {
+    color: var(--cor-primaria);
+    margin-top: 0;
+}
+
+.clt-artigo footer {
+    margin-top: 1rem;
+    font-size: 0.9em;
+    color: #555;
+    border-top: 1px dashed #CCC;
+    padding-top: 0.5rem;
+}
+
+/* Aviso Legal */
+#aviso-legal {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 195, 0, 0.1); /* Fundo com transparência da cor secundária */
+    border: 1px solid var(--cor-secundaria);
+    border-radius: 6px;
+}
+
+.disclaimer {
+    color: var(--cor-texto-principal);
+    font-style: italic;
+    font-size: 0.95em;
+    line-height: 1.4;
+    margin-bottom: 0;
+}
+
+/*==========================================================*/
+/* 7. RODAPÉ (FOOTER) */
+/*==========================================================*/
+
+footer {
+    background-color: var(--cor-texto-principal);
+    color: #EFEFEF;
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+footer a {
+    color: #ADD8E6; /* Azul claro para contraste e visibilidade */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: var(--cor-fundo);
+}
+
+footer nav ul {
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #333;
+}
+
+footer p {
+    margin-top: 1rem;
+    opacity: 0.7;
+}
